@@ -27,24 +27,28 @@ const CreatePrimitive = async (primitiveType = 'triangle-list') => {
 
     const shader = Shaders();
     const pipeline = device.createRenderPipeline({
-        vertexStage: {
+        vertex: {
             module: device.createShaderModule({
                 code: shader.vertex
             }),
             entryPoint: "main"
         },
-        fragmentStage: {
+        fragment: {
             module: device.createShaderModule({
                 code: shader.fragment
             }),
-            entryPoint: "main"
+            entryPoint: "main",
+            targets: [{
+                format: swapChainFormat as GPUTextureFormat
+            }]
         },
         primitiveTopology: primitiveType as GPUPrimitiveTopology,
         colorStates: [{
             format: swapChainFormat
         }],
-        vertexState:{
-            indexFormat: indexFormat as GPUIndexFormat
+        primitive:{
+            topology: primitiveType as GPUPrimitiveTopology,
+            stripIndexFormat: indexFormat as GPUIndexFormat
         }
     });
 
