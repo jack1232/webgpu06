@@ -56,8 +56,9 @@ const CreatePrimitive = async (primitiveType = 'triangle-list') => {
     const textureView = swapChain.getCurrentTexture().createView();
     const renderPass = commandEncoder.beginRenderPass({
         colorAttachments: [{
-            attachment: textureView,
-            loadValue: [0.5, 0.5, 0.8, 1] //background color
+            view: textureView,
+            loadValue: [0.5, 0.5, 0.8, 1], //background color
+            storeOp: 'store'
         }]
     });
     renderPass.setPipeline(pipeline);
