@@ -1,5 +1,5 @@
 # Step-by-Step WebGPU Graphics Programming (6) 
-## WebGPU Primitives: Points and Lines
+## WebGPU Primitives: Triangle
 
 This is the source code for the 6th part of a series YouTube videos on step-by-step WebGPU graphics programming.
 
