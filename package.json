@@ -8,7 +8,8 @@
     "tscw": "tsc --watch",
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
-    "watch": "webpack --watch --mode production"
+    "watch": "webpack --watch --mode production",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --allow-unclean"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,7 @@
   "dependencies": {
     "@types/jquery": "^3.5.5",
     "@types/node": "14.14.20",
-    "@webgpu/types": "^0.1.4",
+    "@webgpu/types": "^0.1.6",
     "css-loader": "^5.2.0",
     "jquery": "^3.6.0",
     "jshint": "^2.12.0",
@@ -25,5 +26,7 @@
     "webpack": "^5.18.0",
     "webpack-cli": "^4.6.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "push-dir": "^0.4.1"
+  }
 }
