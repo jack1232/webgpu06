@@ -23,10 +23,12 @@ const CreatePrimitive = async (primitiveType = 'triangle-list') => {
     context.configure({
         device: device,
         format: format,
+        alphaMode: 'opaque'
     });
 
     const shader = Shaders();
     const pipeline = device.createRenderPipeline({
+        layout:'auto',
         vertex: {
             module: device.createShaderModule({
                 code: shader.vertex
@@ -53,13 +55,14 @@ const CreatePrimitive = async (primitiveType = 'triangle-list') => {
     const renderPass = commandEncoder.beginRenderPass({
         colorAttachments: [{
             view: textureView,
-            loadValue: [0.5, 0.5, 0.8, 1], //background color
+            clearValue: [0.5, 0.5, 0.8, 1], //background color
+            loadOp:'clear',
             storeOp: 'store'
         }]
     });
     renderPass.setPipeline(pipeline);
     renderPass.draw(9, 1, 0, 0);
-    renderPass.endPass();
+    renderPass.end();
     
     device.queue.submit([commandEncoder.finish()]);
 }
